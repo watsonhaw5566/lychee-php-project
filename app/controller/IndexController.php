@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\controller;
 
-use App\model\User;
 use Lychee\http\JsonResponse;
-use Lychee\http\Request;
 use Lychee\http\Response;
+use Lychee\i18n\I18nMiddleware;
+use Lychee\routing\Middleware;
 use Lychee\routing\Route;
 
 /**
@@ -26,6 +26,7 @@ class IndexController
     }
 
     #[Route('/hello/{name}')]
+    #[Middleware(I18nMiddleware::class)]
     public function hello(string $name): JsonResponse
     {
         return new JsonResponse([
