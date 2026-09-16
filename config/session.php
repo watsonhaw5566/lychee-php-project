@@ -16,7 +16,7 @@ return [
     'expire'    => 120,
 
     // Cookie 路径
-    'path'      => '/',
+    'cookie_path'  => '/',
 
     // Cookie 域名
     'domain'    => null,
