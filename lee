@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * 应用命令行入口。
+ *
+ * 用法：
+ *   php lee run [--host=127.0.0.1] [--port=8000]   # 启动开发服务器
+ *   php lee list                                    # 查看所有命令
+ *   php lee route:list                              # 查看路由列表
+ *   php lee migrate:run                             # 执行迁移
+ *   php lee cron:run                                # 运行定时任务
+ */
+
+$basePath = dirname(__FILE__);
+
+require $basePath . '/vendor/autoload.php';
+
+use Lychee\Application;
+use Lychee\console\Input;
+use Lychee\console\Output;
+
+$app = new Application(
+    basePath: $basePath,
+    controllerNamespace: 'App\\controller',
+);
+
+$argv  = $_SERVER['argv'] ?? [];
+array_shift($argv);
+
+$input  = new Input($argv);
+$output = new Output();
+
+/** @var \Lychee\console\Application $console */
+$console = $app->container->get(\Lychee\console\Application::class);
+exit($console->run($input, $output));
