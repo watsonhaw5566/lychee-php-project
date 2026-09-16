@@ -43,7 +43,7 @@ class IndexController
     }
 
     #[Route('/error')]
-    public function test()
+    public function error()
     {
         return $a;
     }
