@@ -41,7 +41,7 @@ class IndexController
         ]);
     }
 
-    #[Route('/test')]
+    #[Route('/error')]
     public function test()
     {
         return $a;
