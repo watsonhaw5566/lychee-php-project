@@ -13,7 +13,7 @@
   "homepage": "https://github.com/watsonhaw5566/lychee-php-project",
   "require": {
     "php": "^8.2",
-    "watsonhaw/lychee-php": "^0.1"
+    "watsonhaw/lychee-php": "^0.2"
   },
   "autoload": {
     "psr-4": {
