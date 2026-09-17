@@ -12,6 +12,7 @@ return [
             'type'  => 'file',
             'path'  => runtime_path('log'),
             'level' => env('LOG_LEVEL', 'debug'),
+            'max_files' => 30,
         ],
     ],
 ];
