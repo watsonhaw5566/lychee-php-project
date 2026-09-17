@@ -21,4 +21,10 @@ class IndexController
 
         return response($html, 200, ['Content-Type' => 'text/html; charset=utf-8']);
     }
+
+    #[Route('/test')]
+    public function test()
+    {
+       return  $a;
+    }
 }
