@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 return [
     // 默认磁盘
-    'default' => 'aliyun',
+    'default' => 'local',
 
     // 磁盘列表
     'disks'   => [
