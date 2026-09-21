@@ -13,10 +13,10 @@ return [
             'hostname' => env('DB_HOST', '127.0.0.1'),
             'hostport' => (int) env('DB_PORT', 3306),
             'database' => env('DB_DATABASE', ''),
-            'username' => env('DB_USERNAME', 'root'),
+            'username' => env('DB_USERNAME', ''),
             'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8mb4',
-            'prefix'   => env('DB_PREFIX', 'lychee_'),
+            'prefix'   => env('DB_PREFIX', ''),
             // 断线后是否自动重连（默认 false）
             'break_reconnect' => false,
             // 是否监听 SQL（默认 true）
