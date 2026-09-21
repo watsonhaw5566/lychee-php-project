@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\controller;
+namespace app\controller;
 
 use Lychee\http\Response;
 use Lychee\routing\Route;

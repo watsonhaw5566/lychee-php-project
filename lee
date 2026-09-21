@@ -24,7 +24,7 @@ use Lychee\console\Output;
 
 $app = new Application(
     basePath: $basePath,
-    controllerNamespace: 'App\\controller',
+    controllerNamespace: 'app\\controller',
 );
 
 $argv  = $_SERVER['argv'] ?? [];

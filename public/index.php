@@ -23,7 +23,7 @@ use Lychee\Application;
 
 $app = new Application(
     basePath: $basePath,
-    controllerNamespace: 'App\\controller',
+    controllerNamespace: 'app\\controller',
 );
 
 $app->run();
