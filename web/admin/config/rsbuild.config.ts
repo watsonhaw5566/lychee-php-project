@@ -38,9 +38,10 @@ export default defineConfig({
   // 生产优化
   performance: {
     removeConsole: true,
-    chunkSplit: {
-      strategy: 'split-by-experience',
-    },
+  },
+  // Rsbuild v2：split-by-experience 策略迁移为 splitChunks.preset: 'default'
+  splitChunks: {
+    preset: 'default',
   },
   tools: {
     rspack: {
