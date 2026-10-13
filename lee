@@ -12,6 +12,7 @@ declare(strict_types=1);
  *   php lee route:list                              # 查看路由列表
  *   php lee migrate:run                             # 执行迁移
  *   php lee cron:run                                # 运行定时任务
+ *   php lee make:nginx example.com                  # 生成宝塔 nginx.conf
  */
 
 $basePath = dirname(__FILE__);
@@ -35,4 +36,8 @@ $output = new Output();
 
 /** @var \Lychee\console\Application $console */
 $console = $app->container->get(\Lychee\console\Application::class);
+
+// 注册应用自定义命令
+$console->addCommand(\app\command\NginxConfCommand::class);
+
 exit($console->run($input, $output));
