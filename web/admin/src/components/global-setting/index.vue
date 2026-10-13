@@ -67,7 +67,7 @@ const themeColors = [
   { name: '极光绿', value: '#00B42A' },
   { name: '活力橙', value: '#FF7D00' },
   { name: '中国红', value: '#F53F3F' },
-  { name: '酱紫', value: '#722ED1' },
+  { name: '酱样紫', value: '#722ED1' },
 ];
 
 const selectedTheme = ref(getStoredThemeColor() || defaultSettings.themeColor);
