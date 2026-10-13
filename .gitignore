@@ -1,13 +1,19 @@
+# IDE
 .idea
 .vscode
-
+# 环境变量
 .env
-
+# 依赖
 vendor
-runtime/**/*
-
+# 运行时数据
+runtime/**
+!runtime/**/
+!runtime/**/.gitkeep
+# composer.lock
 composer.lock
-
+# node_modules
+web/admin/node_modules
+# lychee-php文档
 lychee-docs
 # AI
 .trae
