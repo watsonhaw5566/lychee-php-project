@@ -1,0 +1,20 @@
+{
+  "theme": "light",
+  "colorWeak": false,
+  "navbar": true,
+  "menu": true,
+  "topMenu": false,
+  "hideMenu": false,
+  "menuCollapse": false,
+  "footer": true,
+  "themeColor": "#F2708E",
+  "menuWidth": 220,
+  "globalSettings": false,
+  "device": "desktop",
+  "tabBar": true,
+  "menuFromServer": false,
+  "serverMenu": [],
+  "title": "Lychee Admin",
+  "subTitle": "登录 Lychee Admin 管理后台",
+  "copyRight": "Lychee Admin"
+}

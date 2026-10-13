@@ -1,0 +1,92 @@
+{
+  "name": "arco-design-pro-vue",
+  "description": "Arco Design Pro for Vue",
+  "version": "1.0.0",
+  "private": true,
+  "author": "ArcoDesign Team",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "admin-dev": "rsbuild dev -c ./config/rsbuild.config.ts --open",
+    "admin-build": "rsbuild build -c ./config/rsbuild.config.ts",
+    "preview": "rsbuild preview  -c ./config/rsbuild.config.ts",
+    "type:check": "vue-tsc --noEmit --skipLibCheck",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue src",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue src",
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "cd \"$(git rev-parse --show-toplevel)/web/admin\" && yarn exec nano-staged"
+  },
+  "nano-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.vue": [
+      "stylelint --fix",
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{less,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@arco-design/color": "^0.4.0",
+    "@arco-design/web-vue": "^2.44.7",
+    "@vueuse/core": "^9.3.0",
+    "axios": "^1.13.0",
+    "dayjs": "^1.11.5",
+    "echarts": "^5.4.0",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.21",
+    "mitt": "^3.0.0",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.23",
+    "query-string": "^8.0.3",
+    "sortablejs": "^1.15.0",
+    "vue": "^3.2.40",
+    "vue-echarts": "^8.0.0",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@rsbuild/core": "1.4.2",
+    "@rsbuild/plugin-babel": "1.0.1-beta.15",
+    "@rsbuild/plugin-image-compress": "^1.0.2",
+    "@rsbuild/plugin-less": "1.2.4",
+    "@rsbuild/plugin-svgr": "1.2.0",
+    "@rsbuild/plugin-vue": "1.0.7",
+    "@rsbuild/plugin-vue-jsx": "1.1.0",
+    "@types/lodash": "^4.14.186",
+    "@types/nprogress": "^0.2.0",
+    "@types/sortablejs": "^1.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "@vue/babel-plugin-jsx": "^1.1.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.6.0",
+    "less": "^4.1.3",
+    "nano-staged": "^0.9.0",
+    "postcss-html": "^1.8.1",
+    "postcss-less": "^6.0.0",
+    "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.13.1",
+    "stylelint": "^14.13.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^29.0.0",
+    "typescript": "^4.8.4",
+    "unplugin-vue-components": "^28.8.0",
+    "vue-tsc": "^1.0.14"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

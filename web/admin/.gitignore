@@ -1,0 +1,9 @@
+.idea
+.vscode
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+# 忽略自动生成的组件类型定义文件
+components.d.ts
