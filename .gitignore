@@ -12,7 +12,7 @@ runtime/**
 # composer.lock
 composer.lock
 # node_modules
-public/admin
+public/**
 web/admin/node_modules
 # lychee-php文档
 lychee-docs

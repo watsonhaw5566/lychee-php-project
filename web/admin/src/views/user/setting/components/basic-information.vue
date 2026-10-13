@@ -23,7 +23,7 @@
       :rules="[
         { required: true, message: $t('userSetting.form.error.email.required') },
         {
-          match: /^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)+$/,
+          match: /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/,
           message: $t('userSetting.form.error.email.format'),
         },
       ]"
