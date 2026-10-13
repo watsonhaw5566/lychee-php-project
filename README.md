@@ -12,11 +12,11 @@
 
 ## 技术栈
 
-| 端 | 技术 |
-| --- | --- |
-| 后端 | PHP 8.2+、Lychee PHP
-| 前端 | Vue 3、TypeScript、Rsbuild、Arco Design Vue、Pinia、Vue Router |
-| 数据库 | MySQL 5.7+ / 8.0 |
+| 端   | 技术                                                        |
+|-----|-----------------------------------------------------------|
+| 后端  | PHP 8.2+、Lychee PHP                                       |
+| 前端  | Vue 3、TypeScript、Rsbuild、Arco Design Vue、Pinia、Vue Router |
+| 数据库 | MySQL 5.7+ / 8.0                                          |
 
 ## 环境要求
 

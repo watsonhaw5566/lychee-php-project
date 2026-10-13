@@ -35,6 +35,16 @@ export default defineConfig({
       'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js', // Resolve the i18n warning issue
     },
   },
+  // 构建产物直接输出到后端 public/admin，由 PHP 站点以 /admin 子目录提供
+  output: {
+    // 构建产物输出到项目根目录的 public/admin 子目录
+    // 整个 admin 目录均为前端生成，可安全整体清理重建
+    distPath: {
+      root: resolve(__dirname, '../../../public/admin'),
+    },
+    // 静态资源 URL 前缀，与 Vue Router base 保持一致
+    assetPrefix: '/admin/',
+  },
   // 生产优化
   performance: {
     removeConsole: true,
