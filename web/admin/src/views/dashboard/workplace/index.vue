@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div class="welcome-title">你好，{{ userStore.name }}，欢迎回来</div>
-    <div class="welcome-desc">{{ today }} · Lychee Admin 管理后台</div>
+    <a-card class="welcome-card" :bordered="false">
+      <div class="welcome-title">你好，{{ userStore.name }}，欢迎回来</div>
+      <div class="welcome-desc">{{ today }} · Lychee Admin 管理后台</div>
+    </a-card>
 
     <a-card class="overview-card" :bordered="false">
       <div class="overview-title">数据概况</div>
@@ -111,14 +113,24 @@ export default {
   min-height: 100%;
 }
 
+.welcome-card {
+  margin-bottom: 16px;
+  border-radius: 4px;
+
+  :deep(.arco-card-body) {
+    padding: 24px 32px;
+  }
+}
+
 .welcome-title {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.4;
   color: var(--color-text-1);
 }
 
 .welcome-desc {
-  margin: 4px 0 16px;
+  margin-top: 8px;
   font-size: 13px;
   color: var(--color-text-3);
 }

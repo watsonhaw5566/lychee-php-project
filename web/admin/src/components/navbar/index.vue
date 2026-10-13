@@ -134,7 +134,6 @@
                 </span>
               </a-space>
             </a-doption>
-            <!-- 个人中心 / 设置页面未启用，待后续开发后恢复
             <a-doption>
               <a-space @click="$router.push({ name: 'Info' })">
                 <icon-user />
@@ -151,7 +150,6 @@
                 </span>
               </a-space>
             </a-doption>
-            -->
             <a-doption>
               <a-space @click="handleLogout">
                 <icon-export />

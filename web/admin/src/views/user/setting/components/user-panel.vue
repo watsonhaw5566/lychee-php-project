@@ -1,12 +1,13 @@
 <template>
   <a-card :bordered="false">
-    <a-space :size="54">
+    <a-space :size="54" wrap>
       <a-upload
         :custom-request="customRequest"
         list-type="picture-card"
         :file-list="fileList"
         :show-upload-button="true"
         :show-file-list="false"
+        accept="image/*"
         @change="uploadChange"
       >
         <template #upload-button>
@@ -14,69 +15,68 @@
             <template #trigger-icon>
               <icon-camera />
             </template>
-            <img v-if="fileList.length" :src="fileList[0].url" alt="user avatar" />
+            <img
+              v-if="fileList.length && fileList[0].url"
+              :src="fileList[0].url"
+              alt="user avatar"
+            />
+            <span v-else class="avatar-text">{{ avatarText }}</span>
           </a-avatar>
         </template>
       </a-upload>
       <a-descriptions
         :data="renderData"
-        :column="2"
-        align="right"
+        :column="1"
         layout="inline-horizontal"
         :label-style="{
-          width: '140px',
+          width: '96px',
           fontWeight: 'normal',
-          color: 'rgb(var(--gray-8))',
+          color: 'var(--color-text-3)',
         }"
         :value-style="{
-          width: '200px',
           paddingLeft: '8px',
-          textAlign: 'left',
         }"
       >
         <template #label="{ label }">{{ $t(label) }} :</template>
-        <template #value="{ value, data }">
-          <a-tag v-if="data.label === 'userSetting.label.certification'" color="green" size="small">
-            已认证
-          </a-tag>
-          <span v-else>{{ value }}</span>
-        </template>
       </a-descriptions>
     </a-space>
   </a-card>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import type { FileItem, RequestOption } from '@arco-design/web-vue/es/upload/interfaces';
 import { useUserStore } from '@/store';
 import { userUploadApi } from '@/api/user-center';
 import type { DescData } from '@arco-design/web-vue/es/descriptions/interface';
 
 const userStore = useUserStore();
-const file = {
-  uid: '-2',
-  name: 'avatar.png',
-  url: userStore.avatar,
-};
-const renderData = [
+const fileList = ref<FileItem[]>(
+  userStore.avatar ? [{ uid: '-1', name: 'avatar.png', url: userStore.avatar }] : [],
+);
+
+// 未上传头像时，用用户名首字符作为头像
+const avatarText = computed(() => (userStore.name || '?').charAt(0).toUpperCase());
+
+const renderData = computed<DescData[]>(() => [
   {
     label: 'userSetting.label.name',
-    value: userStore.username,
+    value: userStore.name || '-',
   },
   {
     label: 'userSetting.label.accountId',
-    value: userStore.id,
+    value: userStore.accountId || '-',
   },
   {
     label: 'userSetting.label.registrationDate',
-    value: userStore.create_time,
+    value: userStore.registrationDate || '-',
   },
-] as DescData[];
-const fileList = ref<FileItem[]>([file]);
-const uploadChange = (fileItemList: FileItem[], fileItem: FileItem) => {
+]);
+
+const uploadChange = (_fileItemList: FileItem[], fileItem: FileItem) => {
   fileList.value = [fileItem];
 };
+
 const customRequest = (options: RequestOption) => {
   // docs: https://axios-http.com/docs/cancellation
   const controller = new AbortController();
@@ -95,14 +95,12 @@ const customRequest = (options: RequestOption) => {
     };
 
     try {
-      // https://github.com/axios/axios/issues/1630
-      // https://github.com/nuysoft/Mock/issues/127
-
       const res = await userUploadApi(formData, {
         controller,
         onUploadProgress,
       });
       onSuccess(res);
+      fileList.value = [{ uid: fileItem.uid, name: fileItem.name, url: res.data.url }];
       userStore.setInfo({
         avatar: res.data.url,
       });
@@ -110,6 +108,7 @@ const customRequest = (options: RequestOption) => {
       onError(error);
     }
   })();
+
   return {
     abort() {
       controller.abort();
@@ -120,15 +119,20 @@ const customRequest = (options: RequestOption) => {
 
 <style scoped lang="less">
 .arco-card {
-  padding: 14px 0 4px 4px;
   border-radius: 4px;
+}
+
+.info-avatar {
+  font-size: 40px;
+  color: #fff;
+  background-color: rgb(var(--arcoblue-6));
 }
 
 :deep(.arco-avatar-trigger-icon-button) {
   width: 32px;
   height: 32px;
   line-height: 32px;
-  background-color: #e8f3ff;
+  background-color: rgb(var(--arcoblue-1));
 
   .arco-icon-camera {
     margin-top: 8px;

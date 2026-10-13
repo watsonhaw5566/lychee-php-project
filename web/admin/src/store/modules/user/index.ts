@@ -20,6 +20,7 @@ const useUserStore = defineStore('user', {
     locationName: undefined,
     phone: undefined,
     registrationDate: undefined,
+    lastLoginTime: undefined,
     accountId: undefined,
     certification: undefined,
     role: '',

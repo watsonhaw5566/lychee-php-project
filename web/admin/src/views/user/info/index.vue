@@ -1,38 +1,82 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['menu.user', 'menu.user.info']" />
-    <UserInfoHeader />
-    <div class="content">
-      <div class="content-left">
-        <a-grid :cols="24" :col-gap="16" :row-gap="16">
-          <a-grid-item :span="24">
-            <MyProject />
-          </a-grid-item>
-          <a-grid-item :span="24">
-            <LatestActivity />
-          </a-grid-item>
-        </a-grid>
-      </div>
-      <div class="content-right">
-        <a-grid :cols="24" :row-gap="16">
-          <a-grid-item :span="24">
-            <MyTeam />
-          </a-grid-item>
-          <a-grid-item class="panel" :span="24">
-            <LatestNotification />
-          </a-grid-item>
-        </a-grid>
-      </div>
-    </div>
+    <a-space direction="vertical" :size="16" fill>
+      <UserInfoHeader />
+      <a-card class="general-card">
+        <template #title>
+          {{ $t('userInfo.title.baseInfo') }}
+        </template>
+        <template #extra>
+          <a-button type="primary" @click="$router.push({ name: 'Setting' })">
+            <template #icon>
+              <icon-edit />
+            </template>
+            {{ $t('userInfo.editUserInfo') }}
+          </a-button>
+        </template>
+        <a-descriptions
+          :data="renderData"
+          :column="2"
+          layout="inline-horizontal"
+          :label-style="{ width: '100px', color: 'var(--color-text-3)', paddingRight: '12px' }"
+        >
+          <template #label="{ label }">{{ $t(label) }}</template>
+          <template #value="{ value, data }">
+            <a-tag v-if="data.label === 'userInfo.label.role'" color="arcoblue" size="small">
+              {{ value }}
+            </a-tag>
+            <span v-else>{{ value || '-' }}</span>
+          </template>
+        </a-descriptions>
+      </a-card>
+    </a-space>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/store';
 import UserInfoHeader from './components/user-info-header.vue';
-import LatestNotification from './components/latest-notification.vue';
-import MyProject from './components/my-project.vue';
-import LatestActivity from './components/latest-activity.vue';
-import MyTeam from './components/my-team.vue';
+
+const userStore = useUserStore();
+const userInfo = storeToRefs(userStore);
+
+const roleText = computed(() => (userInfo.role.value === 'admin' ? '管理员' : '职员'));
+
+const renderData = computed(() => [
+  {
+    label: 'userSetting.label.accountId',
+    value: userInfo.accountId.value,
+    dataIndex: 'accountId',
+  },
+  {
+    label: 'userSetting.label.name',
+    value: userInfo.name.value,
+    dataIndex: 'name',
+  },
+  {
+    label: 'userSetting.basicInfo.form.label.email',
+    value: userInfo.email.value,
+    dataIndex: 'email',
+  },
+  {
+    label: 'userInfo.label.role',
+    value: roleText.value,
+    dataIndex: 'role',
+  },
+  {
+    label: 'userSetting.label.registrationDate',
+    value: userInfo.registrationDate.value,
+    dataIndex: 'registrationDate',
+  },
+  {
+    label: 'userInfo.label.lastLoginTime',
+    value: userInfo.lastLoginTime.value,
+    dataIndex: 'lastLoginTime',
+  },
+]);
 </script>
 
 <script lang="ts">
@@ -46,44 +90,13 @@ export default {
   padding: 0 20px 20px;
 }
 
-.content {
-  display: flex;
-  margin-top: 12px;
-
-  &-left {
-    flex: 1;
-    margin-right: 16px;
-    overflow: hidden;
-    // background-color: var(--color-bg-2);
-
-    :deep(.arco-tabs-nav-tab) {
-      margin-left: 16px;
-    }
-  }
-
-  &-right {
-    width: 332px;
-  }
-
-  .tab-pane-wrapper {
-    padding: 0 16px 16px;
-  }
+:deep(.arco-descriptions) {
+  max-width: 720px;
 }
-</style>
 
-<style lang="less" scoped>
-.mobile {
-  .content {
-    display: block;
-
-    &-left {
-      margin-right: 0;
-      margin-bottom: 16px;
-    }
-
-    &-right {
-      width: 100%;
-    }
+@media (max-width: 768px) {
+  :deep(.arco-descriptions) {
+    grid-template-columns: 1fr !important;
   }
 }
 </style>

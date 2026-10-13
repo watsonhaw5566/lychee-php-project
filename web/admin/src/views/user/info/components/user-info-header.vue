@@ -1,71 +1,83 @@
 <template>
-  <div class="header">
-    <a-space :size="12" direction="vertical" align="center">
-      <a-avatar :size="64">
-        <template #trigger-icon>
-          <icon-camera />
-        </template>
-        <img :src="userInfo.avatar" />
+  <a-card class="user-header" :bordered="false">
+    <div class="banner" />
+    <div class="user-body">
+      <a-avatar :size="80" class="user-avatar">
+        <img v-if="userInfo.avatar" :src="userInfo.avatar" alt="avatar" />
+        <span v-else>{{ avatarText }}</span>
       </a-avatar>
-      <a-typography-title :heading="6" style="margin: 0">
-        {{ userInfo.name }}
-      </a-typography-title>
-      <div class="user-msg">
-        <a-space :size="18">
-          <div>
-            <icon-user />
-            <a-typography-text>{{ userInfo.jobName }}</a-typography-text>
-          </div>
-          <div>
-            <icon-home />
-            <a-typography-text>
-              {{ userInfo.organizationName }}
-            </a-typography-text>
-          </div>
-          <div>
-            <icon-location />
-            <a-typography-text>{{ userInfo.locationName }}</a-typography-text>
-          </div>
+      <div class="user-meta">
+        <a-space :size="8">
+          <a-typography-title :heading="5" style="margin: 0">
+            {{ userInfo.name || '-' }}
+          </a-typography-title>
+          <a-tag color="arcoblue" size="small">
+            {{ roleText }}
+          </a-tag>
         </a-space>
+        <a-typography-text type="secondary" class="user-sub">
+          <icon-email />
+          {{ userInfo.email || '-' }}
+        </a-typography-text>
       </div>
-    </a-space>
-  </div>
+    </div>
+  </a-card>
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
 import { useUserStore } from '@/store';
 
 const userInfo = useUserStore();
+
+// 未上传头像时，用用户名首字符作为头像
+const avatarText = computed(() => (userInfo.name || '?').charAt(0).toUpperCase());
+
+const roleText = computed(() => (userInfo.role === 'admin' ? '管理员' : '职员'));
 </script>
 
 <style scoped lang="less">
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 204px;
-  color: var(--gray-10);
-  background: url('//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/41c6b125cc2e27021bf7fcc9a9b1897c.svg~tplv-49unhts6dw-image.image')
-    no-repeat;
-  background-size: cover;
+.user-header {
+  overflow: hidden;
   border-radius: 4px;
 
-  :deep(.arco-avatar-trigger-icon-button) {
-    color: rgb(var(--arcoblue-6));
-
-    :deep(.arco-icon) {
-      vertical-align: -1px;
-    }
+  :deep(.arco-card-body) {
+    padding: 0;
   }
+}
 
-  .user-msg {
-    .arco-icon {
-      color: rgb(var(--gray-10));
-    }
+.banner {
+  height: 120px;
+  background: linear-gradient(135deg, rgb(var(--arcoblue-5)) 0%, rgb(var(--arcoblue-7)) 100%);
+}
 
-    .arco-typography {
-      margin-left: 6px;
-    }
-  }
+.user-body {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 24px 20px;
+}
+
+.user-avatar {
+  margin-top: -40px;
+  overflow: hidden;
+  font-size: 28px;
+  color: #fff;
+  background-color: rgb(var(--arcoblue-6));
+  border: 3px solid var(--color-bg-2);
+  border-radius: 50%;
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 6px;
+  margin-left: 16px;
+}
+
+.user-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 </style>
