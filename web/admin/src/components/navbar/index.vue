@@ -126,6 +126,7 @@
             <span v-else class="avatar-text">{{ avatarText }}</span>
           </a-avatar>
           <template #content>
+            <!-- 切换角色功能暂未实现，先隐藏入口
             <a-doption>
               <a-space @click="switchRoles">
                 <icon-tag />
@@ -134,6 +135,7 @@
                 </span>
               </a-space>
             </a-doption>
+            -->
             <a-doption>
               <a-space @click="$router.push({ name: 'Info' })">
                 <icon-user />
@@ -167,7 +169,8 @@
 
 <script lang="ts" setup>
 import { computed, ref, inject } from 'vue';
-import { Message } from '@arco-design/web-vue';
+// 切换角色功能恢复时一并取消注释
+// import { Message } from '@arco-design/web-vue';
 import { useDark, useToggle, useFullscreen } from '@vueuse/core';
 import { useAppStore, useUserStore } from '@/store';
 import { LOCALE_OPTIONS } from '@/locale';
@@ -235,10 +238,11 @@ const setDropDownVisible = () => {
   });
   triggerBtn.value.dispatchEvent(event);
 };
-const switchRoles = async () => {
-  const res = await userStore.switchRoles();
-  Message.success(res as string);
-};
+// 切换角色功能暂未实现，待后端支持后恢复下拉入口
+// const switchRoles = async () => {
+//   const res = await userStore.switchRoles();
+//   Message.success(res as string);
+// };
 const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
 </script>
 

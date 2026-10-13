@@ -33,12 +33,13 @@ const useUserStore = defineStore('user', {
   },
 
   actions: {
-    switchRoles() {
-      return new Promise((resolve) => {
-        this.role = this.role === 'user' ? 'admin' : 'user';
-        resolve(this.role);
-      });
-    },
+    // 切换角色功能暂未实现，待后端支持后恢复导航栏入口
+    // switchRoles() {
+    //   return new Promise((resolve) => {
+    //     this.role = this.role === 'user' ? 'admin' : 'user';
+    //     resolve(this.role);
+    //   });
+    // },
     // Set user's information
     setInfo(partial: Partial<UserState>) {
       this.$patch(partial);
