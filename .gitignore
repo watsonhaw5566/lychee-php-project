@@ -9,10 +9,9 @@ vendor
 runtime/**
 !runtime/**/
 !runtime/**/.gitkeep
-# composer.lock
-composer.lock
-# node_modules
+# public
 public/**
+# node_modules
 web/admin/node_modules
 # lychee-php文档
 lychee-docs
