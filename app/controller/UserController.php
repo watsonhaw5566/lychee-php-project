@@ -110,9 +110,9 @@ class UserController extends ResourceController
             return json(['errno' => 0, 'code' => 401, 'msg' => '用户不存在', 'data' => null], 401);
         }
 
-        $data = $request->post();
+        $data     = $request->post();
         $username = trim((string) ($data['username'] ?? $data['nickname'] ?? ''));
-        $email = trim((string) ($data['email'] ?? ''));
+        $email    = trim((string) ($data['email'] ?? ''));
 
         if ($username === '' || $email === '') {
             return json(['errno' => 0, 'code' => 400, 'msg' => '用户名、邮箱不能为空', 'data' => null], 400);
@@ -128,7 +128,7 @@ class UserController extends ResourceController
         }
 
         $user->username = $username;
-        $user->email = $email;
+        $user->email    = $email;
         $user->save();
 
         return json(['errno' => 0, 'code' => 200, 'msg' => 'success', 'data' => null]);
@@ -146,8 +146,8 @@ class UserController extends ResourceController
             return json(['errno' => 0, 'code' => 401, 'msg' => '用户不存在', 'data' => null], 401);
         }
 
-        $data = $request->post();
-        $password = (string) ($data['password'] ?? '');
+        $data            = $request->post();
+        $password        = (string) ($data['password'] ?? '');
         $confirmPassword = (string) ($data['confirm_password'] ?? '');
 
         if (strlen($password) < 6) {
@@ -197,7 +197,7 @@ class UserController extends ResourceController
             return json(['errno' => 0, 'code' => 400, 'msg' => '头像上传失败', 'data' => null], 400);
         }
 
-        $url = storage('public')->url($path);
+        $url          = storage('public')->url($path);
         $user->avatar = $url;
         $user->save();
 

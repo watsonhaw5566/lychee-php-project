@@ -1,0 +1,6 @@
+parameters:
+  level: 1
+  paths:
+    - app
+  ignoreErrors:
+    - '#Static call to instance method think\\Model#'

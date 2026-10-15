@@ -7,8 +7,6 @@ use Lychee\http\HttpException;
 use Lychee\http\Request;
 use Lychee\http\Response;
 use Lychee\routing\RouteNotFoundException;
-use think\db\exception\DataNotFoundException;
-use think\db\exception\ModelNotFoundException;
 use think\exception\ValidateException;
 use Throwable;
 

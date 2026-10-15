@@ -9,9 +9,9 @@ return [
     // 日志频道列表
     'channels' => [
         'file' => [
-            'type'  => 'file',
-            'path'  => runtime_path('log'),
-            'level' => env('LOG_LEVEL', 'debug'),
+            'type'      => 'file',
+            'path'      => runtime_path('log'),
+            'level'     => env('LOG_LEVEL', 'debug'),
             'max_files' => 30,
         ],
     ],

@@ -8,7 +8,7 @@ return [
 
     // 缓存驱动列表
     'stores'  => [
-        'file' => [
+        'file'  => [
             'type'          => 'File',
             'path'          => runtime_path('cache'),
             'expire'        => 0,
