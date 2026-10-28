@@ -2,7 +2,7 @@
   <div class="container">
     <a-card class="welcome-card" :bordered="false">
       <div class="welcome-title">你好，{{ userStore.name }}，欢迎回来</div>
-      <div class="welcome-desc">{{ today }} · Lychee Admin 管理后台</div>
+      <div class="welcome-desc">{{ today }}</div>
     </a-card>
 
     <a-card class="overview-card" :bordered="false">
