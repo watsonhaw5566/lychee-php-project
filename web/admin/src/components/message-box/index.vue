@@ -3,7 +3,7 @@
     <div class="message-box__header">
       <span class="message-box__title">{{ $t('messageBox.tab.title.message') }}</span>
       <a-link
-        v-if="unreadCount"
+        v-if="messageStore.unreadCount"
         :size="'small'"
         class="message-box__all-read"
         @click="handleAllRead"
@@ -11,7 +11,7 @@
         {{ $t('messageBox.allRead') }}
       </a-link>
     </div>
-    <a-spin class="message-box__body" :loading="loading">
+    <a-spin class="message-box__body" :loading="messageStore.loading">
       <a-empty
         v-if="!renderList.length"
         :description="$t('messageBox.noContent')"
@@ -23,42 +23,22 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
-import { queryMessageList, setMessageStatus, MessageRecord, MessageListType } from '@/api/message';
-import useLoading from '@/hooks/loading';
+import { computed } from 'vue';
+import { useMessageStore } from '@/store';
+import { MessageListType } from '@/api/message';
 import List from './list.vue';
 
 const showMax = 5;
-const { loading, setLoading } = useLoading(true);
-const messageList = ref<MessageRecord[]>([]);
+const messageStore = useMessageStore();
 
-async function fetchSourceData() {
-  setLoading(true);
-  try {
-    const { data } = await queryMessageList();
-    messageList.value = data;
-  } catch (err) {
-    // you can report use errorHandler or other
-  } finally {
-    setLoading(false);
-  }
-}
-async function readMessage(data: MessageListType) {
-  const ids = data.map((item) => item.id);
-  await setMessageStatus({ ids });
-  fetchSourceData();
-}
-// 开箱即用阶段不区分消息/通知/待办，统一展示最近的若干条
-const renderList = computed(() => messageList.value.slice(0, showMax));
-const unreadCount = computed(() => renderList.value.filter((item) => !item.status).length);
+const renderList = computed(() => messageStore.list.slice(0, showMax));
 const handleItemClick = (items: MessageListType) => {
-  if (renderList.value.length) readMessage([...items]);
+  if (renderList.value.length) messageStore.readMessages([...items]);
 };
 const handleAllRead = () => {
   const unread = renderList.value.filter((item) => !item.status);
-  if (unread.length) readMessage(unread);
+  if (unread.length) messageStore.readMessages(unread);
 };
-fetchSourceData();
 </script>
 
 <style scoped lang="less">

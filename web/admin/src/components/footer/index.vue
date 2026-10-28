@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import setting from '@/views/user/setting/index.vue';
+import setting from '@/config/settings.json';
 </script>
 
 <style lang="less" scoped>

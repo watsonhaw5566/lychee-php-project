@@ -11,8 +11,8 @@
     unmount-on-close
     :visible="visible"
     :cancel-text="$t('settings.close')"
-    :ok-text="$t('settings.copySettings')"
-    @ok="copySettings"
+    :ok-text="$t('settings.saveSettings')"
+    @ok="saveSettings"
     @cancel="cancel"
   >
     <template #title>{{ $t('settings.title') }}</template>
@@ -38,7 +38,6 @@
       </div>
     </div>
     <Block :options="contentOpts" :title="$t('settings.content')" />
-    <Block :options="othersOpts" :title="$t('settings.otherSettings')" />
     <a-alert>{{ $t('settings.alertContent') }}</a-alert>
   </a-drawer>
 </template>
@@ -47,7 +46,6 @@
 import { computed, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import { useI18n } from 'vue-i18n';
-import { useClipboard } from '@vueuse/core';
 import { useAppStore } from '@/store';
 import defaultSettings from '@/config/settings.json';
 import { applyThemeColor, getStoredThemeColor, storeThemeColor } from '@/utils/theme-color';
@@ -57,7 +55,6 @@ const emit = defineEmits(['cancel']);
 
 const appStore = useAppStore();
 const { t } = useI18n();
-const { copy } = useClipboard();
 const visible = computed(() => appStore.globalSettings);
 
 // 预设主题色（参考 Ant Design Pro 经典色板，首项为品牌荔枝粉）
@@ -93,34 +90,15 @@ const contentOpts = computed(() => [
   },
   { name: 'settings.footer', key: 'footer', defaultVal: appStore.footer },
   { name: 'settings.tabBar', key: 'tabBar', defaultVal: appStore.tabBar },
-  {
-    name: 'settings.menuFromServer',
-    key: 'menuFromServer',
-    defaultVal: appStore.menuFromServer,
-  },
-  {
-    name: 'settings.menuWidth',
-    key: 'menuWidth',
-    defaultVal: appStore.menuWidth,
-    type: 'number',
-  },
-]);
-const othersOpts = computed(() => [
-  {
-    name: 'settings.colorWeak',
-    key: 'colorWeak',
-    defaultVal: appStore.colorWeak,
-  },
 ]);
 
 const cancel = () => {
   appStore.updateSettings({ globalSettings: false });
   emit('cancel');
 };
-const copySettings = async () => {
-  const text = JSON.stringify(appStore.$state, null, 2);
-  await copy(text);
-  Message.success(t('settings.copySettings.message'));
+const saveSettings = () => {
+  appStore.saveSettings();
+  Message.success(t('settings.saveSettings.message'));
 };
 const setVisible = () => {
   appStore.updateSettings({ globalSettings: true });

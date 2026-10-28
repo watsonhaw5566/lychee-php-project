@@ -155,17 +155,17 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.5",
+            "version": "7.16.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/guzzlehttp/guzzle/7.15.5/guzzlehttp-guzzle-7.15.5.zip",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/guzzlehttp/guzzle/7.16.1/guzzlehttp-guzzle-7.16.1.zip",
+                "reference": "81755d989b3007ca7f88a069857553cd08e7dc2e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5.3",
-                "guzzlehttp/psr7": "^2.13.1",
+                "guzzlehttp/promises": "^2.6",
+                "guzzlehttp/psr7": "^2.13.2",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -257,17 +257,17 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.1"
             },
-            "time": "2026-08-24T09:21:06+00:00"
+            "time": "2026-10-25T21:35:21+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.5.3",
+            "version": "2.6.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/guzzlehttp/promises/2.5.3/guzzlehttp-promises-2.5.3.zip",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/guzzlehttp/promises/2.6.0/guzzlehttp-promises-2.6.0.zip",
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154",
                 "shasum": ""
             },
             "require": {
@@ -321,17 +321,17 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.5.3"
+                "source": "https://github.com/guzzle/promises/tree/2.6.0"
             },
-            "time": "2026-08-24T09:11:28+00:00"
+            "time": "2026-10-18T12:46:59+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.13.1",
+            "version": "2.13.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/guzzlehttp/psr7/2.13.1/guzzlehttp-psr7-2.13.1.zip",
-                "reference": "95e7828100de18b4e269fb1703be530082d5166d",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/guzzlehttp/psr7/2.13.2/guzzlehttp-psr7-2.13.2.zip",
+                "reference": "adee536f95101929f262b8c59e8a61472f347d58",
                 "shasum": ""
             },
             "require": {
@@ -420,9 +420,9 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.13.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.13.2"
             },
-            "time": "2026-08-24T09:13:11+00:00"
+            "time": "2026-10-17T23:49:46+00:00"
         },
         {
             "name": "league/flysystem",
@@ -828,11 +828,11 @@
         },
         {
             "name": "overtrue/flysystem-cos",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/overtrue/flysystem-cos/5.2.0/overtrue-flysystem-cos-5.2.0.zip",
-                "reference": "1cc9db072a66356f8ff88bfe6cd247a04e6644f8",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/overtrue/flysystem-cos/5.2.1/overtrue-flysystem-cos-5.2.1.zip",
+                "reference": "34499a3ca0be622440804dda296a77da4f03ca2d",
                 "shasum": ""
             },
             "require": {
@@ -864,17 +864,17 @@
             "description": "Flysystem adapter for the QCloud COS storage.",
             "support": {
                 "issues": "https://github.com/overtrue/flysystem-cos/issues",
-                "source": "https://github.com/overtrue/flysystem-cos/tree/5.2.0"
+                "source": "https://github.com/overtrue/flysystem-cos/tree/5.2.1"
             },
-            "time": "2025-09-25T04:21:07+00:00"
+            "time": "2026-10-20T20:24:00+00:00"
         },
         {
             "name": "overtrue/qcloud-cos-client",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/overtrue/qcloud-cos-client/2.2.1/overtrue-qcloud-cos-client-2.2.1.zip",
-                "reference": "e66935db0b5e38f6262cde7feaba76730a92b9c0",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/overtrue/qcloud-cos-client/2.2.2/overtrue-qcloud-cos-client-2.2.2.zip",
+                "reference": "d48db7e823dae93e27d0d4298d7004744cfb3ca3",
                 "shasum": ""
             },
             "require": {
@@ -925,9 +925,9 @@
             "description": "Client of QCloud.com COS",
             "support": {
                 "issues": "https://github.com/overtrue/qcloud-cos-client/issues",
-                "source": "https://github.com/overtrue/qcloud-cos-client/tree/2.2.1"
+                "source": "https://github.com/overtrue/qcloud-cos-client/tree/2.2.2"
             },
-            "time": "2026-05-22T08:48:02+00:00"
+            "time": "2026-10-20T21:01:35+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
@@ -1948,11 +1948,11 @@
         },
         {
             "name": "watsonhaw/lychee-php",
-            "version": "v0.7.0",
+            "version": "v0.7.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/watsonhaw/lychee-php/v0.7.0/watsonhaw-lychee-php-v0.7.0.zip",
-                "reference": "2f3301ba74806928d81e3afe73eac3a312805252",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/watsonhaw/lychee-php/v0.7.1/watsonhaw-lychee-php-v0.7.1.zip",
+                "reference": "c803afb4d93387b00249c0817088992a13018ee4",
                 "shasum": ""
             },
             "require": {
@@ -1996,9 +1996,9 @@
             "description": "A lightweight, IDE-friendly PHP web framework.",
             "support": {
                 "issues": "https://github.com/watsonhaw5566/lychee-php/issues",
-                "source": "https://github.com/watsonhaw5566/lychee-php/tree/v0.7.0"
+                "source": "https://github.com/watsonhaw5566/lychee-php/tree/v0.7.1"
             },
-            "time": "2026-10-10T09:06:12+00:00"
+            "time": "2026-10-22T07:45:42+00:00"
         },
         {
             "name": "watsonhaw/think-orm",
@@ -2164,11 +2164,11 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/composer/semver/3.5.1/composer-semver-3.5.1.zip",
-                "reference": "528948210cc46f967a4b98e83b19e76f2b504993",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/composer/semver/3.5.2/composer-semver-3.5.2.zip",
+                "reference": "9dfce66f1e97360ea5e6d3e38ab14277e4cc591e",
                 "shasum": ""
             },
             "require": {
@@ -2219,9 +2219,9 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.5.1"
+                "source": "https://github.com/composer/semver/tree/3.5.2"
             },
-            "time": "2026-10-05T13:12:12+00:00"
+            "time": "2026-10-22T15:37:26+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -2271,37 +2271,37 @@
         },
         {
             "name": "ergebnis/agent-detector",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/ergebnis/agent-detector/1.2.0/ergebnis-agent-detector-1.2.0.zip",
-                "reference": "e211f17928c8b95a51e06040792d57f5462fb271",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/ergebnis/agent-detector/1.3.0/ergebnis-agent-detector-1.3.0.zip",
+                "reference": "0cd815cec1207873c37624d33f0f2853523152f3",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.51.0",
-                "ergebnis/license": "^2.7.0",
+                "ergebnis/composer-normalize": "^2.54.0",
+                "ergebnis/license": "^2.8.0",
                 "ergebnis/php-cs-fixer-config": "^6.60.2",
-                "ergebnis/phpstan-rules": "^2.13.1",
-                "ergebnis/phpunit-slow-test-detector": "^2.24.0",
-                "ergebnis/rector-rules": "^1.18.1",
+                "ergebnis/phpstan-rules": "^2.14.0",
+                "ergebnis/phpunit-slow-test-detector": "^2.26.0",
+                "ergebnis/rector-rules": "^1.18.5",
                 "fakerphp/faker": "^1.24.1",
                 "infection/infection": "^0.26.6",
                 "phpstan/extension-installer": "^1.4.3",
-                "phpstan/phpstan": "^2.1.54",
-                "phpstan/phpstan-deprecation-rules": "^2.0.4",
-                "phpstan/phpstan-phpunit": "^2.0.16",
-                "phpstan/phpstan-strict-rules": "^2.0.10",
+                "phpstan/phpstan": "^2.2.14",
+                "phpstan/phpstan-deprecation-rules": "^2.0.5",
+                "phpstan/phpstan-phpunit": "^2.1.1",
+                "phpstan/phpstan-strict-rules": "^2.1.0",
                 "phpunit/phpunit": "^9.6.34",
-                "rector/rector": "^2.4.2"
+                "rector/rector": "^2.7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2-dev"
+                    "dev-main": "1.3-dev"
                 },
                 "composer-normalize": {
                     "indent-size": 2,
@@ -2330,7 +2330,7 @@
                 "security": "https://github.com/ergebnis/agent-detector/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/agent-detector"
             },
-            "time": "2026-05-07T08:19:07+00:00"
+            "time": "2026-10-15T11:13:32+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -2716,11 +2716,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.1",
+            "version": "2.3.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpstan/phpstan/2.3.1/phpstan-phpstan-2.3.1.zip",
-                "reference": "6155239b488e95d26d1ebd95c6b4bb294d7f09db",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpstan/phpstan/2.3.3/phpstan-phpstan-2.3.3.zip",
+                "reference": "4b57dc8ca7456b635d1661845f44bc060b02c6b0",
                 "shasum": ""
             },
             "require": {
@@ -2765,7 +2765,7 @@
                 "security": "https://github.com/phpstan/phpstan/security/policy",
                 "source": "https://github.com/phpstan/phpstan-src"
             },
-            "time": "2026-10-08T21:09:11+00:00"
+            "time": "2026-10-27T14:06:26+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3030,11 +3030,11 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.39",
+            "version": "12.5.42",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpunit/phpunit/12.5.39/phpunit-phpunit-12.5.39.zip",
-                "reference": "4e8cbead3741cc57f16d142f4c5dc73c2747820a",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpunit/phpunit/12.5.42/phpunit-phpunit-12.5.42.zip",
+                "reference": "1d6dbe748c079e5d2b03bca1be69d0f4cc52a578",
                 "shasum": ""
             },
             "require": {
@@ -3102,9 +3102,9 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.39"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.42"
             },
-            "time": "2026-10-12T15:27:27+00:00"
+            "time": "2026-10-27T04:15:03+00:00"
         },
         {
             "name": "psr/event-dispatcher",
