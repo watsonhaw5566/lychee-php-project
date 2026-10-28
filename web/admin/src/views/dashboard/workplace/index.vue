@@ -118,7 +118,7 @@ export default {
   border-radius: 4px;
 
   :deep(.arco-card-body) {
-    padding: 24px 32px;
+    padding: 24px;
   }
 }
 
