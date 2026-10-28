@@ -2,18 +2,14 @@
   <div class="container" :style="{ backgroundColor: isDark ? 'rgb(35, 35, 36)' : '' }">
     <div class="logo">
       <img alt="logo" :src="logoUrl" class="logo-img" />
-      <div class="logo-text" :style="{ color: isDark && '#ffff' }">
-        {{ setting.title }}
-      </div>
+      <div class="logo-text">{{ setting.title }}</div>
     </div>
     <LoginBanner />
     <div class="content" :style="{ backgroundColor: isDark ? 'rgb(35, 35, 36)' : '' }">
       <div class="content-inner">
         <LoginForm />
       </div>
-      <div class="footer">
-        <Footer />
-      </div>
+      <div class="copyright">{{ copyRight }}</div>
     </div>
   </div>
 </template>
@@ -27,6 +23,8 @@ import LoginForm from './components/login-form.vue';
 import LoginBanner from './components/banner.vue';
 import setting from '../../config/settings.json';
 import logoUrl from '@/assets/logo.png';
+
+const copyRight = setting.copyRight.replace('{year}', String(new Date().getFullYear()));
 
 const router = useRouter();
 const { isDark } = useThemes();
@@ -54,14 +52,17 @@ onMounted(() => {
     width: 50%;
     align-items: center;
     justify-content: center;
-    padding-bottom: 40px;
   }
 
-  .footer {
+  .copyright {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    bottom: 24px;
+    left: 0;
     width: 100%;
+    text-align: center;
+    color: var(--color-text-3);
+    font-size: 13px;
+    line-height: 1.6;
   }
 }
 
@@ -83,8 +84,14 @@ onMounted(() => {
   &-text {
     margin-right: 4px;
     margin-left: 8px;
-    color: var(--color-fill-1);
+    color: #fff;
     font-size: 20px;
+  }
+}
+
+@media (max-width: @screen-md) {
+  .logo-text {
+    color: var(--color-text-1);
   }
 }
 </style>

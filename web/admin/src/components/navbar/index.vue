@@ -69,7 +69,7 @@
       <li>
         <a-tooltip :content="$t('settings.navbar.alerts')">
           <div class="message-box-trigger">
-            <a-badge :count="9" dot>
+            <a-badge :count="messageStore.unreadCount">
               <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setPopoverVisible">
                 <icon-notification />
               </a-button>
@@ -102,8 +102,7 @@
           </a-button>
         </a-tooltip>
       </li>
-      <!-- 页面配置仅开发环境可用，生产构建时不渲染 -->
-      <li v-if="isDev">
+      <li>
         <a-tooltip :content="$t('settings.title')">
           <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setVisible">
             <template #icon>
@@ -137,14 +136,6 @@
             </a-doption>
             -->
             <a-doption>
-              <a-space @click="$router.push({ name: 'Info' })">
-                <icon-user />
-                <span>
-                  {{ $t('messageBox.userCenter') }}
-                </span>
-              </a-space>
-            </a-doption>
-            <a-doption>
               <a-space @click="$router.push({ name: 'Setting' })">
                 <icon-settings />
                 <span>
@@ -168,11 +159,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, inject } from 'vue';
+import { computed, ref, inject, onMounted } from 'vue';
 // 切换角色功能恢复时一并取消注释
 // import { Message } from '@arco-design/web-vue';
 import { useDark, useToggle, useFullscreen } from '@vueuse/core';
-import { useAppStore, useUserStore } from '@/store';
+import { useAppStore, useUserStore, useMessageStore } from '@/store';
 import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
@@ -183,6 +174,7 @@ import logoUrl from '@/assets/logo.png';
 
 const appStore = useAppStore();
 const userStore = useUserStore();
+const messageStore = useMessageStore();
 const { logout } = useUser();
 const { changeLocale, currentLocale } = useLocale();
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
@@ -213,7 +205,6 @@ const toggleTheme = useToggle(isDark);
 const handleToggleTheme = () => {
   toggleTheme();
 };
-const isDev = import.meta.env.DEV;
 const setVisible = () => {
   appStore.updateSettings({ globalSettings: true });
 };
@@ -244,6 +235,10 @@ const setDropDownVisible = () => {
 //   Message.success(res as string);
 // };
 const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
+
+onMounted(() => {
+  messageStore.fetchList();
+});
 </script>
 
 <style scoped lang="less">

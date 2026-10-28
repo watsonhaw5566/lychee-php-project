@@ -16,5 +16,9 @@ export interface AppState {
   tabBar: boolean;
   menuFromServer: boolean;
   serverMenu: RouteRecordNormalized[];
+  title: string;
+  subTitle: string;
+  bannerSubTitle: string;
+  copyRight: string;
   [key: string]: unknown;
 }
