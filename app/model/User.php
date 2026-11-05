@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace app\model;
 
-use think\Model;
+use Lychee\orm\Model;
 
 /**
  * 后台用户。
@@ -23,13 +23,14 @@ use think\Model;
  */
 class User extends Model
 {
-    protected $hidden = ['password'];
+    /** 序列化时隐藏密码 */
+    protected array $hidden = ['password'];
 
     /**
      * 密码写入时自动哈希。
      */
-    public function setPasswordAttr(string $value): string
+    public function setPasswordAttr(mixed $value): string
     {
-        return password_hash($value, PASSWORD_DEFAULT);
+        return password_hash((string) $value, PASSWORD_DEFAULT);
     }
 }

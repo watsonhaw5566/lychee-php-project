@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\controller;
 
 use app\model\User;
+use app\validate\UserValidate;
 use Lychee\auth\SatokenMiddleware;
 use Lychee\http\JsonResponse;
 use Lychee\http\Request;
@@ -13,6 +14,8 @@ use Lychee\routing\Resource;
 use Lychee\routing\ResourceController;
 use Lychee\routing\Route;
 use Lychee\routing\WithoutMiddleware;
+use Lychee\validate\Validate;
+use Lychee\validate\ValidateException;
 
 /**
  * 后台用户：登录认证 + 用户资源 CRUD。
@@ -30,16 +33,20 @@ class UserController extends ResourceController
      */
     #[Route('/login', 'POST')]
     #[WithoutMiddleware]
-    public function login(string $email = '', string $password = ''): JsonResponse
+    public function login(Request $request): JsonResponse
     {
-        $user = User::where('email', $email)->find();
+        $data = $request->post();
 
-        if (!$user || !password_verify($password, (string) $user->password)) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '邮箱或密码错误', 'data' => null], 400);
+        (new UserValidate())->scene('login')->failException()->check($data);
+
+        $user = User::where('email', $data['email'])->find();
+
+        if (!$user || !password_verify((string) $data['password'], (string) $user->password)) {
+            throw new ValidateException('邮箱或密码错误');
         }
 
         if ((int) $user->status !== 1) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '账号已被禁用', 'data' => null], 400);
+            throw new ValidateException('账号已被禁用');
         }
 
         $token = satoken()->login((int) $user->id, [
@@ -110,25 +117,17 @@ class UserController extends ResourceController
             return json(['errno' => 0, 'code' => 401, 'msg' => '用户不存在', 'data' => null], 401);
         }
 
-        $data     = $request->post();
-        $username = trim((string) ($data['username'] ?? $data['nickname'] ?? ''));
-        $email    = trim((string) ($data['email'] ?? ''));
+        $data = $request->post();
 
-        if ($username === '' || $email === '') {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '用户名、邮箱不能为空', 'data' => null], 400);
-        }
+        (new UserValidate())->scene('change_info')->failException()->check($data);
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '邮箱格式不正确', 'data' => null], 400);
-        }
-
-        $exists = User::where('email', $email)->where('id', '<>', $user->id)->find();
+        $exists = User::where('email', $data['email'])->where('id', '<>', $user->id)->find();
         if ($exists) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '邮箱已存在，请更换', 'data' => null], 400);
+            throw new ValidateException('邮箱已存在，请更换');
         }
 
-        $user->username = $username;
-        $user->email    = $email;
+        $user->username = trim((string) $data['username']);
+        $user->email    = trim((string) $data['email']);
         $user->save();
 
         return json(['errno' => 0, 'code' => 200, 'msg' => 'success', 'data' => null]);
@@ -146,20 +145,12 @@ class UserController extends ResourceController
             return json(['errno' => 0, 'code' => 401, 'msg' => '用户不存在', 'data' => null], 401);
         }
 
-        $data            = $request->post();
-        $password        = (string) ($data['password'] ?? '');
-        $confirmPassword = (string) ($data['confirm_password'] ?? '');
+        $data = $request->post();
 
-        if (strlen($password) < 6) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '密码长度不能少于 6 位', 'data' => null], 400);
-        }
-
-        if ($password !== $confirmPassword) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '两次输入的密码不一致', 'data' => null], 400);
-        }
+        (new UserValidate())->scene('change_password')->failException()->check($data);
 
         // 模型修改器自动哈希
-        $user->password = $password;
+        $user->password = $data['password'];
         $user->save();
 
         return json(['errno' => 0, 'code' => 200, 'msg' => 'success', 'data' => null]);
@@ -180,21 +171,21 @@ class UserController extends ResourceController
         $file = $request->file('file');
 
         if (!$file || !$file->isValid()) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '请选择要上传的头像文件', 'data' => null], 400);
+            throw new ValidateException('请选择要上传的头像文件');
         }
 
         if (!str_starts_with($file->getMimeType(), 'image/')) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '仅支持上传图片文件', 'data' => null], 400);
+            throw new ValidateException('仅支持上传图片文件');
         }
 
         if ($file->getSize() > 2 * 1024 * 1024) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '头像图片大小不能超过 2MB', 'data' => null], 400);
+            throw new ValidateException('头像图片大小不能超过 2MB');
         }
 
         $path = storage('public')->putFile('avatar', $file);
 
         if ($path === false) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '头像上传失败', 'data' => null], 400);
+            throw new ValidateException('头像上传失败');
         }
 
         $url          = storage('public')->url($path);
@@ -234,44 +225,44 @@ class UserController extends ResourceController
     }
 
     /**
-     * 新建用户：基础校验后复用框架流程（密码经模型修改器自动哈希）。
+     * 新建用户：使用验证器场景校验后复用框架流程（密码经模型修改器自动哈希）。
      */
     public function save(Request $request): JsonResponse
     {
-        $data = $request->post();
-
-        if (empty($data['username']) || empty($data['email']) || empty($data['password'])) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '用户名、邮箱、密码不能为空', 'data' => null], 400);
-        }
-
-        if (!filter_var((string) $data['email'], FILTER_VALIDATE_EMAIL)) {
-            return json(['errno' => 0, 'code' => 400, 'msg' => '邮箱格式不正确', 'data' => null], 400);
-        }
+        (new UserValidate())->scene('register')->failException()->check($request->post());
 
         return $this->baseSave($request);
     }
 
     /**
      * 更新用户：密码留空表示不修改密码。
+     *
+     * 更新场景字段均为可选，使用内联规则（非 require 字段缺失时自动跳过）。
      */
     public function update(Request $request, int $id): JsonResponse
     {
+        $data = $request->post();
+
+        (new Validate())
+            ->rule([
+                'username' => 'max:50',
+                'email'    => 'email',
+                'role'     => 'in:admin,user',
+                'status'   => 'in:0,1',
+            ])
+            ->failException()
+            ->check($data);
+
         $user = User::find($id);
 
         if (!$user) {
             return json(['errno' => 0, 'code' => 400, 'msg' => $this->notExistMessage, 'data' => null], 400);
         }
 
-        $data = $request->post();
-
         if (isset($data['email']) && $data['email'] !== $user->email) {
-            if (!filter_var((string) $data['email'], FILTER_VALIDATE_EMAIL)) {
-                return json(['errno' => 0, 'code' => 400, 'msg' => '邮箱格式不正确', 'data' => null], 400);
-            }
-
             $exists = User::where('email', $data['email'])->where('id', '<>', $id)->find();
             if ($exists) {
-                return json(['errno' => 0, 'code' => 400, 'msg' => '邮箱已存在，请更换', 'data' => null], 400);
+                throw new ValidateException('邮箱已存在，请更换');
             }
         }
 

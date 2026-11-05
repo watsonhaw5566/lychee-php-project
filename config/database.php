@@ -11,7 +11,7 @@ return [
         'mysql'           => [
             'type'            => 'mysql',
             'hostname'        => env('DB_HOST', '127.0.0.1'),
-            'hostport'        => (int) env('DB_PORT', 3306),
+            'hostport'        => (int)env('DB_PORT', 3306),
             'database'        => env('DB_DATABASE', ''),
             'username'        => env('DB_USERNAME', ''),
             'password'        => env('DB_PASSWORD', ''),
@@ -20,7 +20,7 @@ return [
             // 断线后是否自动重连（默认 false）
             'break_reconnect' => false,
             // 是否监听 SQL（默认 true）
-            'trigger_sql'     => true,
+            'trigger_sql'     => env('app_debug', false),
         ],
 
         'sqlite'          => [
