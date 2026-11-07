@@ -5,12 +5,6 @@
 .env
 # 依赖
 vendor
-# 运行时数据
-runtime/**
-!runtime/**/
-!runtime/**/.gitkeep
-# public
-public/**
 # node_modules
 web/admin/node_modules
 # lychee-php文档
