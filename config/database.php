@@ -20,7 +20,7 @@ return [
             // 断线后是否自动重连（默认 false）
             'break_reconnect' => false,
             // 是否监听 SQL（默认 true）
-            'trigger_sql'     => env('app_debug', false),
+            'trigger_sql'     => env('APP_DEBUG', false),
         ],
 
         'sqlite'          => [

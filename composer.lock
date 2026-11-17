@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b5a26b98de6f737f53fa9a62f559f1a",
+    "content-hash": "7dbb7e32fadb44e72f77a11044c638df",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -95,17 +95,17 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.16.1",
+            "version": "7.16.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/guzzlehttp/guzzle/7.16.1/guzzlehttp-guzzle-7.16.1.zip",
-                "reference": "81755d989b3007ca7f88a069857553cd08e7dc2e",
+                "url": "https://mirrors.tencent.com/repository/composer/guzzlehttp/guzzle/7.16.2/guzzlehttp-guzzle-7.16.2.zip",
+                "reference": "22e3847536750e5a7b89d4f880f28aaf7b72e287",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^2.6",
-                "guzzlehttp/psr7": "^2.13.2",
+                "guzzlehttp/psr7": "^2.13.3",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -197,9 +197,9 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.16.1"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.2"
             },
-            "time": "2026-10-25T21:35:21+00:00"
+            "time": "2026-11-17T03:22:11+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -267,11 +267,11 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.13.2",
+            "version": "2.13.3",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/guzzlehttp/psr7/2.13.2/guzzlehttp-psr7-2.13.2.zip",
-                "reference": "adee536f95101929f262b8c59e8a61472f347d58",
+                "url": "https://mirrors.tencent.com/repository/composer/guzzlehttp/psr7/2.13.3/guzzlehttp-psr7-2.13.3.zip",
+                "reference": "6d3cd8285a97eaa352956a4ada92fa03ecce1c4e",
                 "shasum": ""
             },
             "require": {
@@ -360,9 +360,9 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.13.2"
+                "source": "https://github.com/guzzle/psr7/tree/2.13.3"
             },
-            "time": "2026-10-17T23:49:46+00:00"
+            "time": "2026-11-12T15:57:42+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1096,11 +1096,11 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.9.4",
+            "version": "4.10.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/ramsey/uuid/4.9.4/ramsey-uuid-4.9.4.zip",
-                "reference": "75d73f48d02797c2c285a7e9f348fadc0102ffe2",
+                "url": "https://mirrors.tencent.com/repository/composer/ramsey/uuid/4.10.0/ramsey-uuid-4.10.0.zip",
+                "reference": "f9aa3efc8015fcbc013d84d699583b268ccb593a",
                 "shasum": ""
             },
             "require": {
@@ -1112,23 +1112,22 @@
                 "rhumsaa/uuid": "self.version"
             },
             "require-dev": {
-                "captainhook/captainhook": "^5.25",
-                "captainhook/plugin-composer": "^5.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-                "ergebnis/composer-normalize": "^2.47",
-                "mockery/mockery": "^1.6",
-                "paragonie/random-lib": "^2",
-                "php-mock/php-mock": "^2.6",
-                "php-mock/php-mock-mockery": "^1.5",
+                "captainhook/captainhook": "^5.29.3",
+                "captainhook/plugin-composer": "^5.3.3",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.2.1",
+                "mockery/mockery": "^1.6.15",
+                "paragonie/random-lib": "^2.0.3",
+                "php-mock/php-mock": "^2.7.0",
+                "php-mock/php-mock-mockery": "^1.5.0",
                 "php-parallel-lint/php-parallel-lint": "^1.4.0",
                 "phpbench/phpbench": "^1.2.14",
-                "phpstan/extension-installer": "^1.4",
-                "phpstan/phpstan": "^2.1",
-                "phpstan/phpstan-mockery": "^2.0",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.6",
-                "slevomat/coding-standard": "^8.18",
-                "squizlabs/php_codesniffer": "^3.13"
+                "phpstan/extension-installer": "^1.4.3",
+                "phpstan/phpstan": "^2.3.5",
+                "phpstan/phpstan-mockery": "^2.0.0",
+                "phpstan/phpstan-phpunit": "^2.1.2",
+                "phpunit/phpunit": "^9.6.39",
+                "slevomat/coding-standard": "^8.31.3",
+                "squizlabs/php_codesniffer": "^4.0.4"
             },
             "suggest": {
                 "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
@@ -1162,9 +1161,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.9.4"
+                "source": "https://github.com/ramsey/uuid/tree/4.10.0"
             },
-            "time": "2026-09-16T11:39:30+00:00"
+            "time": "2026-11-14T23:23:20+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1504,11 +1503,11 @@
         },
         {
             "name": "watsonhaw/lychee-php",
-            "version": "v0.13.0",
+            "version": "v0.14.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/watsonhaw/lychee-php/v0.13.0/watsonhaw-lychee-php-v0.13.0.zip",
-                "reference": "27ad7e1e4b2a42bf037c2cdbf39f250e966555fe",
+                "url": "https://mirrors.tencent.com/repository/composer/watsonhaw/lychee-php/v0.14.0/watsonhaw-lychee-php-v0.14.0.zip",
+                "reference": "ee47c1505fe366d03d6eeb3e1c43d2160dc410fa",
                 "shasum": ""
             },
             "require": {
@@ -1516,7 +1515,7 @@
                 "league/flysystem-path-prefixing": "^3.0",
                 "league/flysystem-read-only": "^3.0",
                 "overtrue/flysystem-cos": "^5.0",
-                "php": "^8.2",
+                "php": "^8.3",
                 "psr/container": "^2.0",
                 "psr/log": "^3.0",
                 "psr/simple-cache": "^2.0 || ^3.0",
@@ -1550,9 +1549,9 @@
             "description": "A lightweight, IDE-friendly PHP web framework.",
             "support": {
                 "issues": "https://github.com/watsonhaw5566/lychee-php/issues",
-                "source": "https://github.com/watsonhaw5566/lychee-php/tree/v0.13.0"
+                "source": "https://github.com/watsonhaw5566/lychee-php/tree/v0.14.0"
             },
-            "time": "2026-11-11T02:47:07+00:00"
+            "time": "2026-11-11T11:13:02+00:00"
         },
         {
             "name": "yzh52521/flysystem-oss",
@@ -1977,11 +1976,11 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.95.30",
+            "version": "v3.95.31",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/friendsofphp/php-cs-fixer/v3.95.30/friendsofphp-php-cs-fixer-v3.95.30.zip",
-                "reference": "e85cafc4d861c122839d5409eda3325ac0ec0300",
+                "url": "https://mirrors.tencent.com/repository/composer/friendsofphp/php-cs-fixer/v3.95.31/friendsofphp-php-cs-fixer-v3.95.31.zip",
+                "reference": "285aade9728f04ea24ac15efb6a76d91c0c81b63",
                 "shasum": ""
             },
             "require": {
@@ -2063,9 +2062,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.30"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.31"
             },
-            "time": "2026-11-09T14:32:19+00:00"
+            "time": "2026-11-16T21:05:19+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2268,11 +2267,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/phpstan/phpstan/2.3.5/phpstan-phpstan-2.3.5.zip",
-                "reference": "645a1bd6bead15fc1b8474137467961d0fa30a79",
+                "url": "https://mirrors.tencent.com/repository/composer/phpstan/phpstan/2.3.6/phpstan-phpstan-2.3.6.zip",
+                "reference": "00cedebb76cc82c1592414fa4f616cefdccda16f",
                 "shasum": ""
             },
             "require": {
@@ -2317,7 +2316,7 @@
                 "security": "https://github.com/phpstan/phpstan/security/policy",
                 "source": "https://github.com/phpstan/phpstan-src"
             },
-            "time": "2026-11-03T12:14:22+00:00"
+            "time": "2026-11-15T19:58:26+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2582,11 +2581,11 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.43",
+            "version": "12.5.44",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/phpunit/phpunit/12.5.43/phpunit-phpunit-12.5.43.zip",
-                "reference": "1d5a4a3c98fa1ca3a51402c74b66c2c8df85e0bb",
+                "url": "https://mirrors.tencent.com/repository/composer/phpunit/phpunit/12.5.44/phpunit-phpunit-12.5.44.zip",
+                "reference": "47d052b58672b016b512974c1139346306c8ca24",
                 "shasum": ""
             },
             "require": {
@@ -2614,7 +2613,7 @@
                 "sebastian/object-enumerator": "^7.0.0",
                 "sebastian/recursion-context": "^7.0.1",
                 "sebastian/type": "^6.0.4",
-                "sebastian/version": "^6.0.1",
+                "sebastian/version": "^6.0.2",
                 "staabm/side-effects-detector": "^1.0.5"
             },
             "bin": [
@@ -2654,9 +2653,9 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.43"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.44"
             },
-            "time": "2026-11-02T07:10:00+00:00"
+            "time": "2026-11-13T11:09:06+00:00"
         },
         {
             "name": "psr/event-dispatcher",
